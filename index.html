@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <title>Field Notes — A considered way to live</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+
+    :root { --ink:#17231d; --muted:#647069; --paper:#f5f0e8; --deep:#21382f; --lime:#d4ef8d; --peach:#f2a780; --line:rgba(23,35,29,.17); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:"DM Sans", Arial, sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .shell { width:min(1240px, calc(100% - 48px)); margin:auto; }
+    .eyebrow, .meta { font:500 10px/1.2 "DM Mono", monospace; text-transform:uppercase; letter-spacing:.12em; }
+    .eyebrow { color:var(--muted); }
+    header { height:82px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+    .brand { display:flex; align-items:center; gap:12px; font:600 17px/1 "DM Sans", sans-serif; letter-spacing:-.06em; }
+    .mark { width:24px; height:24px; border-radius:50% 50% 50% 3px; transform:rotate(-35deg); display:block; background:var(--deep); position:relative; overflow:hidden; }
+    .mark:after { content:""; position:absolute; width:21px; height:2px; background:var(--lime); left:7px; top:13px; transform:rotate(-35deg); }
+    nav { display:flex; gap:30px; font-size:13px; }
+    nav a { transition:opacity .2s; } nav a:hover { opacity:.5; }
+    .menu { display:none; border:0; background:none; font:500 11px "DM Mono"; letter-spacing:.1em; }
+    .hero { min-height:620px; padding:62px 0 42px; display:grid; grid-template-columns:1.03fr .97fr; gap:42px; border-bottom:1px solid var(--line); }
+    .hero-copy { display:flex; flex-direction:column; justify-content:space-between; padding:6px 0 4px; }
+    h1 { max-width:660px; margin:21px 0 22px; font:500 clamp(56px,7.6vw,108px)/.91 "Playfair Display", Georgia, serif; letter-spacing:-.065em; }
+    h1 em { color:#638c5d; font-weight:500; }
+    .lede { max-width:390px; color:#4f5c54; font-size:16px; line-height:1.55; margin:0; }
+    .hero-footer { display:flex; justify-content:space-between; align-items:flex-end; margin-top:50px; }
+    .scroll-note { display:flex; align-items:center; gap:12px; }
+    .scroll-note b { display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--ink); border-radius:50%; font-size:18px; font-weight:400; }
+    .issue { text-align:right; }
+    .hero-art { position:relative; min-height:500px; overflow:hidden; background:var(--deep); border-radius:3px; }
+    .sun { position:absolute; width:310px; height:310px; border-radius:50%; top:30px; right:42px; background:var(--lime); box-shadow:0 0 0 28px rgba(212,239,141,.08), 0 0 0 58px rgba(212,239,141,.05); }
+    .ridge { position:absolute; left:-10%; width:125%; border-radius:50% 50% 0 0; transform:rotate(-7deg); }
+    .ridge.one { height:180px; bottom:-56px; background:#759465; }
+    .ridge.two { height:155px; bottom:-75px; left:-2%; background:#3d5a4b; transform:rotate(7deg); }
+    .leaf { position:absolute; background:var(--peach); width:102px; height:174px; border-radius:100% 0 100% 0; transform:rotate(31deg); top:143px; left:89px; }
+    .leaf:after { content:""; width:3px; height:194px; background:#c77958; position:absolute; left:51px; top:-12px; transform:rotate(-4deg); }
+    .art-caption { position:absolute; bottom:24px; right:25px; z-index:2; color:white; font:10px "DM Mono"; letter-spacing:.1em; text-align:right; opacity:.8; }
+    .ticker { padding:15px 0; overflow:hidden; border-bottom:1px solid var(--line); white-space:nowrap; font:500 10px "DM Mono"; letter-spacing:.1em; color:var(--muted); }
+    .ticker span { display:inline-block; animation:marquee 26s linear infinite; } .ticker i { color:#6c9866; font-style:normal; padding:0 25px; font-size:15px; }
+    @keyframes marquee { to { transform:translateX(-35%); } }
+    .intro { padding:120px 0 105px; display:grid; grid-template-columns:1fr 1.52fr; gap:55px; }
+    h2 { margin:0; font:500 clamp(37px,4vw,58px)/.98 "Playfair Display", Georgia, serif; letter-spacing:-.05em; }
+    .intro p { max-width:700px; margin:0; font-size:clamp(22px,2.6vw,37px); line-height:1.14; letter-spacing:-.045em; }
+    .intro p span { color:#668d5e; font-family:"Playfair Display",serif; font-style:italic; }
+    .latest { background:var(--deep); color:#f7f2e9; padding:87px 0 96px; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:39px; } .section-head .eyebrow { color:#a1afa7; } .section-head h2 { margin-top:12px; }
+    .all-link { border-bottom:1px solid currentColor; padding-bottom:4px; font-size:12px; }
+    .stories { display:grid; grid-template-columns:1.4fr .8fr .8fr; gap:20px; }
+    .story { min-height:390px; position:relative; display:flex; flex-direction:column; justify-content:flex-end; padding:22px; overflow:hidden; background:#416452; }
+    .story:nth-child(2) { background:#b9c6a3; color:var(--ink); } .story:nth-child(3) { background:#e9a984; color:var(--ink); }
+    .story:before { content:""; position:absolute; z-index:0; opacity:.8; transition:transform .5s ease; } .story:hover:before { transform:scale(1.06) rotate(6deg); }
+    .story:first-child:before { width:300px; height:300px; border:24px solid var(--lime); border-radius:50%; right:-55px; top:-84px; }
+    .story:nth-child(2):before { width:170px; height:260px; border-radius:100% 0 100% 0; background:#4b6d50; top:47px; left:40px; transform:rotate(35deg); } .story:nth-child(2):hover:before { transform:rotate(41deg) scale(1.07); }
+    .story:nth-child(3):before { width:190px; height:190px; background:#f5e7c2; border-radius:50% 50% 4% 50%; top:38px; right:-47px; }
+    .story > * { position:relative; z-index:1; } .story .meta { margin-bottom:12px; opacity:.75; } .story h3 { margin:0; max-width:440px; font:500 clamp(25px,2.7vw,40px)/1.02 "Playfair Display",Georgia,serif; letter-spacing:-.045em; }
+    .story:not(:first-child) h3 { font-size:25px; }
+    .collections { padding:106px 0; }
+    .collections-grid { margin-top:46px; border-top:1px solid var(--line); }
+    .collection { display:grid; grid-template-columns:80px 1fr 1fr 45px; gap:20px; align-items:center; padding:23px 4px; border-bottom:1px solid var(--line); transition:padding .25s, background .25s; }
+    .collection:hover { padding-left:17px; padding-right:17px; background:#ece6dc; } .collection strong { font:500 clamp(25px,3vw,41px)/1 "Playfair Display",Georgia,serif; letter-spacing:-.05em; } .collection p { margin:0; color:var(--muted); font-size:13px; line-height:1.4; } .arrow { width:38px; height:38px; border-radius:50%; border:1px solid var(--ink); display:grid; place-items:center; font-size:18px; }
+    .quote { background:var(--lime); padding:104px 0; } .quote .shell { display:grid; grid-template-columns:1fr 2fr; gap:40px; } .quote blockquote { margin:0; font:500 clamp(35px,5vw,68px)/.97 "Playfair Display",Georgia,serif; letter-spacing:-.057em; } .quote cite { display:block; margin-top:28px; font:500 10px "DM Mono"; font-style:normal; letter-spacing:.1em; }
+    .newsletter { padding:106px 0; background:#e99f77; } .newsletter .shell { display:grid; grid-template-columns:1fr 1.52fr; gap:42px; } .newsletter h2 { font-size:clamp(42px,5vw,69px); } .newsletter p { font-size:16px; max-width:430px; line-height:1.5; margin:0 0 26px; } form { display:flex; border-bottom:1px solid var(--ink); max-width:530px; } input { flex:1; background:transparent; border:0; outline:0; padding:13px 0; font:14px "DM Sans"; color:var(--ink); } input::placeholder { color:rgba(23,35,29,.65); } button[type=submit] { border:0; background:transparent; font:500 11px "DM Mono"; letter-spacing:.09em; cursor:pointer; }
+    .form-message { height:19px; margin:11px 0 0; font:500 10px "DM Mono"; letter-spacing:.05em; }
+    footer { padding:27px 0 30px; font:11px "DM Mono"; color:var(--muted); } .footer-row { display:flex; justify-content:space-between; gap:15px; } .footer-links { display:flex; gap:18px; }
+    @media(max-width:720px) { .shell{width:min(100% - 32px, 600px)} header{height:66px;position:relative} nav{display:none}.menu{display:block} nav.open{display:flex;position:absolute;z-index:8;top:58px;right:0;padding:15px 17px;gap:15px;background:var(--paper);border:1px solid var(--line);box-shadow:0 12px 25px rgba(23,35,29,.08)}.hero{grid-template-columns:1fr;gap:34px;padding-top:41px;min-height:0}.hero-art{min-height:385px;order:-1}.sun{width:230px;height:230px;right:20px}.leaf{left:44px;top:104px;transform:scale(.8) rotate(31deg)}h1{font-size:59px}.hero-footer{margin-top:42px}.intro{grid-template-columns:1fr;gap:28px;padding:82px 0}.stories{grid-template-columns:1fr;gap:12px}.story{min-height:275px}.latest{padding:67px 0}.section-head{align-items:start}.all-link{margin-top:12px}.collection{grid-template-columns:39px 1fr 35px;gap:13px}.collection p{display:none}.quote{padding:78px 0}.quote .shell,.newsletter .shell{grid-template-columns:1fr;gap:25px}.newsletter{padding:74px 0}.footer-row{flex-direction:column}.hero-footer .issue{display:none} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="#top" aria-label="Field Notes home"><span class="mark"></span>FIELD NOTES</a>
+      <nav aria-label="Main navigation"><a href="#stories">Stories</a><a href="#collections">Collections</a><a href="#about">About</a></nav>
+      <button class="menu" type="button" onclick="document.querySelector('nav').classList.toggle('open')">MENU</button>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div><span class="eyebrow">A slow guide to a full life</span><h1>More wonder.<br>Less <em>noise.</em></h1><p class="lede">Thoughtful ideas, lovely places, and useful objects for a life lived with your eyes open.</p></div>
+          <div class="hero-footer"><a class="scroll-note" href="#stories"><b>↓</b><span class="meta">Discover the latest</span></a><span class="issue meta">Issue 04<br>Autumn / 2026</span></div>
+        </div>
+        <div class="hero-art" role="img" aria-label="An abstract green landscape and peach leaf under a lime sun"><div class="sun"></div><div class="leaf"></div><div class="ridge one"></div><div class="ridge two"></div><span class="art-caption">OUTSIDE / IN<br>BY FIELD NOTES</span></div>
+      </section>
+    </main>
+  </div>
+  <div class="ticker"><span>TAKE THE LONG WAY <i>✳</i> MAKE ROOM FOR DAYDREAMING <i>✳</i> TAKE THE LONG WAY <i>✳</i> MAKE ROOM FOR DAYDREAMING <i>✳</i> TAKE THE LONG WAY <i>✳</i> MAKE ROOM FOR DAYDREAMING <i>✳</i></span></div>
+  <section class="intro shell" id="about"><div><span class="eyebrow">Our point of view</span><h2>Life, noticed.</h2></div><p>Field Notes is for the quietly curious: people who believe the best things are worth <span>looking for</span>, lingering with, and sharing widely.</p></section>
+  <section class="latest" id="stories"><div class="shell"><div class="section-head"><div><span class="eyebrow">Fresh from the field</span><h2>Stories for right now.</h2></div><a class="all-link" href="#collections">View all stories →</a></div><div class="stories"><a href="#newsletter" class="story"><span class="meta">Dispatches / 07 min read</span><h3>The case for giving your weekends a little more blank space.</h3></a><a href="#newsletter" class="story"><span class="meta">Objects / 04 min read</span><h3>Six things that earn their place on the kitchen counter.</h3></a><a href="#newsletter" class="story"><span class="meta">Places / 05 min read</span><h3>A tiny guide to noticing a city like a local.</h3></a></div></div></section>
+  <section class="collections shell" id="collections"><span class="eyebrow">Browse by feeling</span><h2>Useful rabbit holes.</h2><div class="collections-grid"><a class="collection" href="#newsletter"><span class="meta">01</span><strong>Out & about</strong><p>Short trips, long walks, and nearby corners worth knowing.</p><span class="arrow">↗</span></a><a class="collection" href="#newsletter"><span class="meta">02</span><strong>At home</strong><p>Small rituals and spaces that make everyday life feel better.</p><span class="arrow">↗</span></a><a class="collection" href="#newsletter"><span class="meta">03</span><strong>Good company</strong><p>People making generous things, and the ideas that move them.</p><span class="arrow">↗</span></a><a class="collection" href="#newsletter"><span class="meta">04</span><strong>Worth keeping</strong><p>Books, recipes, objects, and notes to return to.</p><span class="arrow">↗</span></a></div></section>
+  <section class="quote"><div class="shell"><span class="eyebrow">A gentle reminder</span><div><blockquote>“A good life is not built in big gestures. It is made, slowly, from the things we choose to pay attention to.”</blockquote><cite>— FIELD NOTES, VOL. 01</cite></div></div></section>
+  <section class="newsletter" id="newsletter"><div class="shell"><div><span class="eyebrow">The Sunday letter</span><h2>A good thing,<br>in your inbox.</h2></div><div><p>One thoughtful read, one useful find, and one reason to get out there. Sent every other Sunday, never noisy.</p><form id="signup"><input id="email" type="email" placeholder="Your email address" required aria-label="Email address"><button type="submit">SIGN ME UP →</button></form><p class="form-message" id="message" aria-live="polite"></p></div></div></section>
+  <footer class="shell"><div class="footer-row"><span>© 2026 FIELD NOTES</span><div class="footer-links"><a href="#top">Instagram</a><a href="#top">Contact</a><a href="#top">Privacy</a></div><span>MADE FOR A WIDER WORLD</span></div></footer>
+  <script>
+    const form = document.getElementById('signup');
+    const message = document.getElementById('message');
+    form.addEventListener('submit', (event) => { event.preventDefault(); const email = document.getElementById('email').value; message.textContent = `You’re on the list — welcome, ${email.split('@')[0]}.`; form.reset(); });
+  </script>
+</body>
+</html>
+
