@@ -1,104 +1,195 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f0e8" />
-  <title>Field Notes — A considered way to live</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Logan DeLong is a Real Estate Advisor with A Better Life Realty, helping people make their next move in Tampa Bay and St. Petersburg.">
+  <meta name="theme-color" content="#0d2928">
+  <title>Logan DeLong | Real Estate Advisor</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
-
-    :root { --ink:#17231d; --muted:#647069; --paper:#f5f0e8; --deep:#21382f; --lime:#d4ef8d; --peach:#f2a780; --line:rgba(23,35,29,.17); }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+    :root { --ink:#112c2b; --deep:#0d2928; --cream:#f5f0e7; --sand:#e8d6bd; --gold:#c99858; --orange:#e8784c; --mist:#dce9df; --line:rgba(17,44,43,.17); }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family:"DM Sans", Arial, sans-serif; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family:"DM Sans",Arial,sans-serif; }
     a { color:inherit; text-decoration:none; }
-    .shell { width:min(1240px, calc(100% - 48px)); margin:auto; }
-    .eyebrow, .meta { font:500 10px/1.2 "DM Mono", monospace; text-transform:uppercase; letter-spacing:.12em; }
-    .eyebrow { color:var(--muted); }
-    header { height:82px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
-    .brand { display:flex; align-items:center; gap:12px; font:600 17px/1 "DM Sans", sans-serif; letter-spacing:-.06em; }
-    .mark { width:24px; height:24px; border-radius:50% 50% 50% 3px; transform:rotate(-35deg); display:block; background:var(--deep); position:relative; overflow:hidden; }
-    .mark:after { content:""; position:absolute; width:21px; height:2px; background:var(--lime); left:7px; top:13px; transform:rotate(-35deg); }
-    nav { display:flex; gap:30px; font-size:13px; }
-    nav a { transition:opacity .2s; } nav a:hover { opacity:.5; }
-    .menu { display:none; border:0; background:none; font:500 11px "DM Mono"; letter-spacing:.1em; }
-    .hero { min-height:620px; padding:62px 0 42px; display:grid; grid-template-columns:1.03fr .97fr; gap:42px; border-bottom:1px solid var(--line); }
-    .hero-copy { display:flex; flex-direction:column; justify-content:space-between; padding:6px 0 4px; }
-    h1 { max-width:660px; margin:21px 0 22px; font:500 clamp(56px,7.6vw,108px)/.91 "Playfair Display", Georgia, serif; letter-spacing:-.065em; }
-    h1 em { color:#638c5d; font-weight:500; }
-    .lede { max-width:390px; color:#4f5c54; font-size:16px; line-height:1.55; margin:0; }
-    .hero-footer { display:flex; justify-content:space-between; align-items:flex-end; margin-top:50px; }
-    .scroll-note { display:flex; align-items:center; gap:12px; }
-    .scroll-note b { display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--ink); border-radius:50%; font-size:18px; font-weight:400; }
-    .issue { text-align:right; }
-    .hero-art { position:relative; min-height:500px; overflow:hidden; background:var(--deep); border-radius:3px; }
-    .sun { position:absolute; width:310px; height:310px; border-radius:50%; top:30px; right:42px; background:var(--lime); box-shadow:0 0 0 28px rgba(212,239,141,.08), 0 0 0 58px rgba(212,239,141,.05); }
-    .ridge { position:absolute; left:-10%; width:125%; border-radius:50% 50% 0 0; transform:rotate(-7deg); }
-    .ridge.one { height:180px; bottom:-56px; background:#759465; }
-    .ridge.two { height:155px; bottom:-75px; left:-2%; background:#3d5a4b; transform:rotate(7deg); }
-    .leaf { position:absolute; background:var(--peach); width:102px; height:174px; border-radius:100% 0 100% 0; transform:rotate(31deg); top:143px; left:89px; }
-    .leaf:after { content:""; width:3px; height:194px; background:#c77958; position:absolute; left:51px; top:-12px; transform:rotate(-4deg); }
-    .art-caption { position:absolute; bottom:24px; right:25px; z-index:2; color:white; font:10px "DM Mono"; letter-spacing:.1em; text-align:right; opacity:.8; }
-    .ticker { padding:15px 0; overflow:hidden; border-bottom:1px solid var(--line); white-space:nowrap; font:500 10px "DM Mono"; letter-spacing:.1em; color:var(--muted); }
-    .ticker span { display:inline-block; animation:marquee 26s linear infinite; } .ticker i { color:#6c9866; font-style:normal; padding:0 25px; font-size:15px; }
-    @keyframes marquee { to { transform:translateX(-35%); } }
-    .intro { padding:120px 0 105px; display:grid; grid-template-columns:1fr 1.52fr; gap:55px; }
-    h2 { margin:0; font:500 clamp(37px,4vw,58px)/.98 "Playfair Display", Georgia, serif; letter-spacing:-.05em; }
-    .intro p { max-width:700px; margin:0; font-size:clamp(22px,2.6vw,37px); line-height:1.14; letter-spacing:-.045em; }
-    .intro p span { color:#668d5e; font-family:"Playfair Display",serif; font-style:italic; }
-    .latest { background:var(--deep); color:#f7f2e9; padding:87px 0 96px; }
-    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:39px; } .section-head .eyebrow { color:#a1afa7; } .section-head h2 { margin-top:12px; }
-    .all-link { border-bottom:1px solid currentColor; padding-bottom:4px; font-size:12px; }
-    .stories { display:grid; grid-template-columns:1.4fr .8fr .8fr; gap:20px; }
-    .story { min-height:390px; position:relative; display:flex; flex-direction:column; justify-content:flex-end; padding:22px; overflow:hidden; background:#416452; }
-    .story:nth-child(2) { background:#b9c6a3; color:var(--ink); } .story:nth-child(3) { background:#e9a984; color:var(--ink); }
-    .story:before { content:""; position:absolute; z-index:0; opacity:.8; transition:transform .5s ease; } .story:hover:before { transform:scale(1.06) rotate(6deg); }
-    .story:first-child:before { width:300px; height:300px; border:24px solid var(--lime); border-radius:50%; right:-55px; top:-84px; }
-    .story:nth-child(2):before { width:170px; height:260px; border-radius:100% 0 100% 0; background:#4b6d50; top:47px; left:40px; transform:rotate(35deg); } .story:nth-child(2):hover:before { transform:rotate(41deg) scale(1.07); }
-    .story:nth-child(3):before { width:190px; height:190px; background:#f5e7c2; border-radius:50% 50% 4% 50%; top:38px; right:-47px; }
-    .story > * { position:relative; z-index:1; } .story .meta { margin-bottom:12px; opacity:.75; } .story h3 { margin:0; max-width:440px; font:500 clamp(25px,2.7vw,40px)/1.02 "Playfair Display",Georgia,serif; letter-spacing:-.045em; }
-    .story:not(:first-child) h3 { font-size:25px; }
-    .collections { padding:106px 0; }
-    .collections-grid { margin-top:46px; border-top:1px solid var(--line); }
-    .collection { display:grid; grid-template-columns:80px 1fr 1fr 45px; gap:20px; align-items:center; padding:23px 4px; border-bottom:1px solid var(--line); transition:padding .25s, background .25s; }
-    .collection:hover { padding-left:17px; padding-right:17px; background:#ece6dc; } .collection strong { font:500 clamp(25px,3vw,41px)/1 "Playfair Display",Georgia,serif; letter-spacing:-.05em; } .collection p { margin:0; color:var(--muted); font-size:13px; line-height:1.4; } .arrow { width:38px; height:38px; border-radius:50%; border:1px solid var(--ink); display:grid; place-items:center; font-size:18px; }
-    .quote { background:var(--lime); padding:104px 0; } .quote .shell { display:grid; grid-template-columns:1fr 2fr; gap:40px; } .quote blockquote { margin:0; font:500 clamp(35px,5vw,68px)/.97 "Playfair Display",Georgia,serif; letter-spacing:-.057em; } .quote cite { display:block; margin-top:28px; font:500 10px "DM Mono"; font-style:normal; letter-spacing:.1em; }
-    .newsletter { padding:106px 0; background:#e99f77; } .newsletter .shell { display:grid; grid-template-columns:1fr 1.52fr; gap:42px; } .newsletter h2 { font-size:clamp(42px,5vw,69px); } .newsletter p { font-size:16px; max-width:430px; line-height:1.5; margin:0 0 26px; } form { display:flex; border-bottom:1px solid var(--ink); max-width:530px; } input { flex:1; background:transparent; border:0; outline:0; padding:13px 0; font:14px "DM Sans"; color:var(--ink); } input::placeholder { color:rgba(23,35,29,.65); } button[type=submit] { border:0; background:transparent; font:500 11px "DM Mono"; letter-spacing:.09em; cursor:pointer; }
-    .form-message { height:19px; margin:11px 0 0; font:500 10px "DM Mono"; letter-spacing:.05em; }
-    footer { padding:27px 0 30px; font:11px "DM Mono"; color:var(--muted); } .footer-row { display:flex; justify-content:space-between; gap:15px; } .footer-links { display:flex; gap:18px; }
-    @media(max-width:720px) { .shell{width:min(100% - 32px, 600px)} header{height:66px;position:relative} nav{display:none}.menu{display:block} nav.open{display:flex;position:absolute;z-index:8;top:58px;right:0;padding:15px 17px;gap:15px;background:var(--paper);border:1px solid var(--line);box-shadow:0 12px 25px rgba(23,35,29,.08)}.hero{grid-template-columns:1fr;gap:34px;padding-top:41px;min-height:0}.hero-art{min-height:385px;order:-1}.sun{width:230px;height:230px;right:20px}.leaf{left:44px;top:104px;transform:scale(.8) rotate(31deg)}h1{font-size:59px}.hero-footer{margin-top:42px}.intro{grid-template-columns:1fr;gap:28px;padding:82px 0}.stories{grid-template-columns:1fr;gap:12px}.story{min-height:275px}.latest{padding:67px 0}.section-head{align-items:start}.all-link{margin-top:12px}.collection{grid-template-columns:39px 1fr 35px;gap:13px}.collection p{display:none}.quote{padding:78px 0}.quote .shell,.newsletter .shell{grid-template-columns:1fr;gap:25px}.newsletter{padding:74px 0}.footer-row{flex-direction:column}.hero-footer .issue{display:none} }
+    button,input,textarea { font:inherit; }
+    .wrap { width:min(1200px,calc(100% - 48px)); margin:0 auto; }
+    .caps { font:500 10px/1.2 "DM Mono",monospace; letter-spacing:.13em; text-transform:uppercase; }
+    .pill { display:inline-flex; align-items:center; justify-content:center; min-height:47px; padding:0 20px; border-radius:100px; font-size:12px; font-weight:700; letter-spacing:.02em; transition:transform .2s,background .2s,color .2s; }
+    .pill:hover { transform:translateY(-2px); }
+    .pill-dark { color:var(--cream); background:var(--deep); }
+    .pill-light { color:var(--deep); background:var(--cream); }
+    .pill-outline { border:1px solid rgba(245,240,231,.55); color:var(--cream); }
+    header { position:absolute; z-index:5; top:0; left:0; right:0; color:var(--cream); }
+    .nav { min-height:86px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(245,240,231,.2); }
+    .brand { display:flex; align-items:center; gap:10px; font-size:17px; font-weight:600; letter-spacing:-.055em; }
+    .monogram { width:30px; height:30px; display:grid; place-items:center; border:1px solid rgba(245,240,231,.7); border-radius:50%; font:500 14px "Playfair Display",serif; }
+    nav { display:flex; align-items:center; gap:29px; font-size:13px; }
+    nav a:not(.pill) { opacity:.85; } nav a:not(.pill):hover { opacity:.5; }
+    .menu-button { display:none; border:0; padding:8px 0; color:inherit; background:none; font:500 11px "DM Mono",monospace; letter-spacing:.1em; }
+    .hero { min-height:760px; position:relative; isolation:isolate; overflow:hidden; color:var(--cream); background:var(--deep); }
+    .hero:before { content:""; position:absolute; inset:0; z-index:-3; background:radial-gradient(circle at 76% 20%,rgba(231,190,126,.5),transparent 23%),linear-gradient(112deg,#0c2a2a 19%,#154344 58%,#315c58 100%); }
+    .hero:after { content:""; position:absolute; inset:0; z-index:-2; opacity:.22; background-image:linear-gradient(115deg,transparent 48%,rgba(255,255,255,.3) 49%,transparent 50%),linear-gradient(30deg,transparent 61%,rgba(255,255,255,.2) 62%,transparent 63%); background-size:48px 48px; mix-blend-mode:soft-light; }
+    .hero .wrap { min-height:760px; display:grid; grid-template-columns:1.05fr .95fr; position:relative; }
+    .hero-copy { padding:185px 0 76px; display:flex; flex-direction:column; justify-content:space-between; }
+    .location { display:flex; gap:9px; align-items:center; color:#d3e0d5; } .pin { width:7px; height:7px; background:var(--orange); border-radius:50%; box-shadow:0 0 0 5px rgba(232,120,76,.19); }
+    h1 { margin:24px 0; max-width:720px; font:500 clamp(56px,7vw,104px)/.9 "Playfair Display",Georgia,serif; letter-spacing:-.068em; }
+    h1 em { color:#f0bf85; font-weight:500; }
+    .hero-copy p { max-width:435px; color:#d8e0d8; font-size:17px; line-height:1.55; margin:0; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:11px; margin-top:30px; }
+    .hero-note { display:flex; align-items:center; gap:15px; color:#d2ded4; }
+    .circle-arrow { flex:none; display:grid; place-items:center; height:43px; width:43px; border:1px solid rgba(245,240,231,.55); border-radius:50%; font-size:19px; }
+    .hero-scene { position:relative; min-height:100%; overflow:hidden; }
+    .sun { position:absolute; width:318px; height:318px; top:171px; right:5%; border-radius:50%; background:linear-gradient(145deg,#f4d08b,#d58c58); box-shadow:0 0 0 27px rgba(244,208,139,.1),0 0 0 61px rgba(244,208,139,.045); }
+    .house { position:absolute; right:-8%; bottom:0; width:690px; height:385px; background:#e8dccb; clip-path:polygon(0 36%,16% 36%,16% 20%,27% 20%,27% 0,38% 0,38% 20%,51% 20%,51% 12%,66% 12%,66% 29%,100% 29%,100% 100%,0 100%); box-shadow:-30px 0 0 rgba(13,41,40,.18); }
+    .house:before { content:""; position:absolute; inset:0; background:repeating-linear-gradient(90deg,transparent 0 75px,rgba(17,44,43,.14) 76px 80px),linear-gradient(0deg,rgba(17,44,43,.2),transparent 52%); }
+    .window { position:absolute; width:78px; height:106px; bottom:51px; background:#163e3d; border:6px solid #f5ead8; box-shadow:inset 0 0 0 2px rgba(225,186,125,.6); }
+    .window.one { left:270px; } .window.two { left:381px; width:120px; height:151px; bottom:0; }
+    .palm { position:absolute; z-index:1; right:70%; bottom:0; height:400px; width:200px; transform:rotate(-8deg); transform-origin:bottom; }
+    .palm:before { content:""; position:absolute; width:17px; height:360px; right:90px; bottom:-35px; border-radius:50% 50% 0 0; background:linear-gradient(90deg,#6c5441,#ac815b); transform:rotate(8deg); }
+    .palm:after { content:""; position:absolute; top:0; right:19px; width:181px; height:160px; border-radius:100% 0 100% 0; background:repeating-conic-gradient(from 15deg at 85% 100%,#1e5148 0 10deg,transparent 11deg 21deg); transform:rotate(17deg); }
+    .scene-label { position:absolute; z-index:3; right:1px; bottom:44px; text-align:right; color:#e4ded3; opacity:.8; }
+    .quick-links { background:var(--sand); }
+    .quick-links .wrap { display:grid; grid-template-columns:repeat(3,1fr); }
+    .quick-link { min-height:137px; padding:30px 29px; border-right:1px solid rgba(17,44,43,.16); display:flex; align-items:center; justify-content:space-between; gap:15px; transition:background .2s; }
+    .quick-link:first-child { border-left:1px solid rgba(17,44,43,.16); } .quick-link:hover { background:#efdcbf; }
+    .quick-link strong { display:block; margin-bottom:6px; font:600 18px/1.1 "Playfair Display",Georgia,serif; letter-spacing:-.03em; }
+    .quick-link span { color:#596968; font-size:12px; }
+    .quick-link b { font:400 21px "DM Sans"; }
+    section { scroll-margin-top:25px; }
+    .intro { padding:123px 0; display:grid; grid-template-columns:.8fr 1.4fr; gap:65px; }
+    h2 { margin:12px 0 0; font:500 clamp(40px,5vw,67px)/.96 "Playfair Display",Georgia,serif; letter-spacing:-.058em; }
+    .intro-copy { max-width:690px; font-size:clamp(23px,2.7vw,37px); line-height:1.14; letter-spacing:-.044em; }
+    .intro-copy em { color:#b16f3c; font-family:"Playfair Display",Georgia,serif; }
+    .services { padding:90px 0 103px; background:var(--mist); }
+    .section-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:43px; } .section-top p { margin:0; color:#49605c; max-width:350px; line-height:1.5; font-size:14px; }
+    .service-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .service { min-height:338px; padding:25px; background:var(--cream); display:flex; flex-direction:column; justify-content:space-between; transition:transform .25s; } .service:hover { transform:translateY(-5px); }
+    .service-number { color:#9a7661; } .service h3 { margin:0; font:500 36px/.98 "Playfair Display",Georgia,serif; letter-spacing:-.05em; } .service p { margin:12px 0 0; color:#52615c; font-size:14px; line-height:1.5; max-width:260px; } .service a { font-size:12px; font-weight:700; }
+    .service-art { width:115px; height:96px; align-self:flex-end; position:relative; background:#d7e4d9; overflow:hidden; } .service-art:before { content:""; position:absolute; width:82px; height:82px; left:16px; top:28px; border-radius:50% 50% 0 0; background:#7da384; } .service-art:after { content:""; position:absolute; width:49px; height:49px; left:34px; top:38px; background:#f3bd7b; border-radius:50%; }
+    .service:nth-child(2) .service-art { background:#f1d8b6; } .service:nth-child(2) .service-art:before { border-radius:0; width:74px; height:51px; top:44px; background:#305554; } .service:nth-child(2) .service-art:after { width:24px; height:31px; top:56px; left:59px; border-radius:14px 14px 0 0; background:#e6d8c4; }
+    .service:nth-child(3) .service-art { background:#e4aa80; } .service:nth-child(3) .service-art:before { width:68px; height:68px; left:24px; top:15px; background:#f6e7d0; } .service:nth-child(3) .service-art:after { width:3px; height:92px; left:56px; top:4px; border-radius:0; background:#8e6149; transform:rotate(36deg); }
+    .process { padding:115px 0; display:grid; grid-template-columns:.83fr 1.43fr; gap:65px; }
+    .process-list { border-top:1px solid var(--line); } .process-item { display:grid; grid-template-columns:68px 1fr 30px; gap:15px; padding:21px 0; border-bottom:1px solid var(--line); align-items:start; } .process-item strong { font:500 28px/1 "Playfair Display",Georgia,serif; letter-spacing:-.04em; } .process-item p { margin:6px 0 0; color:#52615c; font-size:13px; line-height:1.5; max-width:430px; } .process-item b { font-size:20px; font-weight:400; }
+    .statement { position:relative; overflow:hidden; color:var(--cream); background:var(--deep); padding:111px 0; } .statement:after { content:"LD"; position:absolute; right:-22px; bottom:-54px; color:rgba(244,240,231,.05); font:500 350px/.7 "Playfair Display",Georgia,serif; letter-spacing:-.15em; }
+    .statement .wrap { position:relative; z-index:1; display:grid; grid-template-columns:.75fr 1.6fr; gap:55px; } blockquote { margin:0; max-width:820px; font:500 clamp(38px,5.5vw,73px)/.98 "Playfair Display",Georgia,serif; letter-spacing:-.062em; } blockquote em { color:#eabc7e; font-weight:500; } .statement cite { display:block; margin-top:27px; color:#bfccc0; font:500 10px "DM Mono",monospace; letter-spacing:.12em; font-style:normal; text-transform:uppercase; }
+    .contact { padding:112px 0 117px; } .contact-grid { display:grid; grid-template-columns:.88fr 1.12fr; gap:68px; } .contact p { color:#52615c; max-width:370px; line-height:1.55; font-size:16px; } .contact-lines { border-top:1px solid var(--line); } .contact-line { display:flex; justify-content:space-between; gap:20px; padding:19px 0; border-bottom:1px solid var(--line); font-size:15px; } .contact-line span { color:#5d6d68; font-size:12px; } .contact-line a { font-weight:600; } .contact-form { margin-top:27px; display:grid; grid-template-columns:1fr 1fr; gap:12px; } .contact-form input,.contact-form textarea { width:100%; border:1px solid var(--line); background:transparent; border-radius:0; padding:15px; outline-color:var(--orange); font-size:14px; } .contact-form textarea { grid-column:span 2; min-height:102px; resize:vertical; } .contact-form button { grid-column:span 2; border:0; cursor:pointer; } .form-note { grid-column:span 2; margin:0; min-height:17px; color:#596968; font:10px "DM Mono",monospace; letter-spacing:.03em; }
+    footer { padding:35px 0; color:#d9e1d8; background:var(--deep); } .footer-grid { display:grid; grid-template-columns:1.2fr .9fr .9fr; gap:30px; } footer .brand { margin-bottom:13px; } footer p { max-width:330px; color:#aebdb4; font-size:11px; line-height:1.55; margin:0; } footer h4 { margin:2px 0 13px; color:#e7eee5; font:500 10px "DM Mono",monospace; letter-spacing:.11em; } footer a { display:block; margin:0 0 8px; color:#cdd7ce; font-size:12px; } .legal { margin-top:38px; padding-top:17px; border-top:1px solid rgba(245,240,231,.16); color:#91a299; font:10px/1.5 "DM Mono",monospace; }
+    @media (max-width:760px) { .wrap { width:min(100% - 32px,600px); } .nav { min-height:68px; } nav { display:none; } nav.open { position:absolute; top:61px; right:0; display:flex; flex-direction:column; align-items:stretch; gap:0; min-width:190px; padding:8px; background:var(--cream); color:var(--ink); box-shadow:0 14px 30px rgba(0,0,0,.16); } nav.open a { padding:11px 12px; } nav.open .pill { min-height:39px; color:var(--cream); background:var(--deep); } .menu-button { display:block; } .hero,.hero .wrap { min-height:710px; } .hero .wrap { grid-template-columns:1fr; } .hero-copy { position:relative; z-index:2; padding:137px 0 40px; } .hero-scene { position:absolute; inset:0; opacity:.7; } .sun { width:225px; height:225px; top:110px; right:-28px; } .house { width:590px; right:-185px; height:310px; } .palm { right:64%; transform:scale(.75) rotate(-8deg); transform-origin:bottom; } h1 { font-size:59px; } .quick-links .wrap { grid-template-columns:1fr; } .quick-link,.quick-link:first-child { min-height:92px; padding:20px 4px; border-left:0; border-right:0; border-bottom:1px solid var(--line); } .intro,.process,.contact-grid { grid-template-columns:1fr; gap:30px; padding:77px 0; } .service-grid { grid-template-columns:1fr; } .service { min-height:250px; } .section-top { display:block; } .section-top p { margin-top:20px; } .statement { padding:77px 0; } .statement .wrap { grid-template-columns:1fr; gap:29px; } .contact { padding:77px 0; } .footer-grid { grid-template-columns:1fr; gap:25px; } .contact-form { grid-template-columns:1fr; } .contact-form textarea,.contact-form button,.form-note { grid-column:span 1; } }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header>
-      <a class="brand" href="#top" aria-label="Field Notes home"><span class="mark"></span>FIELD NOTES</a>
-      <nav aria-label="Main navigation"><a href="#stories">Stories</a><a href="#collections">Collections</a><a href="#about">About</a></nav>
-      <button class="menu" type="button" onclick="document.querySelector('nav').classList.toggle('open')">MENU</button>
-    </header>
-    <main id="top">
-      <section class="hero">
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Logan DeLong home"><span class="monogram">LD</span>LOGAN DELONG</a>
+      <nav aria-label="Main navigation" id="nav">
+        <a href="#services">Buy &amp; Sell</a>
+        <a href="#process">The Process</a>
+        <a href="#contact">Contact</a>
+        <a class="pill pill-light" href="https://abetterliferealty.com/listing-search" target="_blank" rel="noopener">Search homes</a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false" id="menu">MENU</button>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
         <div class="hero-copy">
-          <div><span class="eyebrow">A slow guide to a full life</span><h1>More wonder.<br>Less <em>noise.</em></h1><p class="lede">Thoughtful ideas, lovely places, and useful objects for a life lived with your eyes open.</p></div>
-          <div class="hero-footer"><a class="scroll-note" href="#stories"><b>↓</b><span class="meta">Discover the latest</span></a><span class="issue meta">Issue 04<br>Autumn / 2026</span></div>
+          <div>
+            <div class="location caps"><span class="pin"></span>Tampa Bay · St. Petersburg · Oldsmar</div>
+            <h1>Your next move,<br>made <em>personal.</em></h1>
+            <p>Whether you are finding your place in the sun or making a smart next step, you deserve an advocate who makes real estate feel clear, calm, and exciting.</p>
+            <div class="hero-actions">
+              <a class="pill pill-light" href="https://abetterliferealty.com/listing-search" target="_blank" rel="noopener">Start your home search →</a>
+              <a class="pill pill-outline" href="https://abetterliferealty.com/home-evaluation" target="_blank" rel="noopener">What is my home worth?</a>
+            </div>
+          </div>
+          <a class="hero-note" href="#services"><span class="circle-arrow">↓</span><span class="caps">Explore how I can help</span></a>
         </div>
-        <div class="hero-art" role="img" aria-label="An abstract green landscape and peach leaf under a lime sun"><div class="sun"></div><div class="leaf"></div><div class="ridge one"></div><div class="ridge two"></div><span class="art-caption">OUTSIDE / IN<br>BY FIELD NOTES</span></div>
-      </section>
-    </main>
-  </div>
-  <div class="ticker"><span>TAKE THE LONG WAY <i>✳</i> MAKE ROOM FOR DAYDREAMING <i>✳</i> TAKE THE LONG WAY <i>✳</i> MAKE ROOM FOR DAYDREAMING <i>✳</i> TAKE THE LONG WAY <i>✳</i> MAKE ROOM FOR DAYDREAMING <i>✳</i></span></div>
-  <section class="intro shell" id="about"><div><span class="eyebrow">Our point of view</span><h2>Life, noticed.</h2></div><p>Field Notes is for the quietly curious: people who believe the best things are worth <span>looking for</span>, lingering with, and sharing widely.</p></section>
-  <section class="latest" id="stories"><div class="shell"><div class="section-head"><div><span class="eyebrow">Fresh from the field</span><h2>Stories for right now.</h2></div><a class="all-link" href="#collections">View all stories →</a></div><div class="stories"><a href="#newsletter" class="story"><span class="meta">Dispatches / 07 min read</span><h3>The case for giving your weekends a little more blank space.</h3></a><a href="#newsletter" class="story"><span class="meta">Objects / 04 min read</span><h3>Six things that earn their place on the kitchen counter.</h3></a><a href="#newsletter" class="story"><span class="meta">Places / 05 min read</span><h3>A tiny guide to noticing a city like a local.</h3></a></div></div></section>
-  <section class="collections shell" id="collections"><span class="eyebrow">Browse by feeling</span><h2>Useful rabbit holes.</h2><div class="collections-grid"><a class="collection" href="#newsletter"><span class="meta">01</span><strong>Out & about</strong><p>Short trips, long walks, and nearby corners worth knowing.</p><span class="arrow">↗</span></a><a class="collection" href="#newsletter"><span class="meta">02</span><strong>At home</strong><p>Small rituals and spaces that make everyday life feel better.</p><span class="arrow">↗</span></a><a class="collection" href="#newsletter"><span class="meta">03</span><strong>Good company</strong><p>People making generous things, and the ideas that move them.</p><span class="arrow">↗</span></a><a class="collection" href="#newsletter"><span class="meta">04</span><strong>Worth keeping</strong><p>Books, recipes, objects, and notes to return to.</p><span class="arrow">↗</span></a></div></section>
-  <section class="quote"><div class="shell"><span class="eyebrow">A gentle reminder</span><div><blockquote>“A good life is not built in big gestures. It is made, slowly, from the things we choose to pay attention to.”</blockquote><cite>— FIELD NOTES, VOL. 01</cite></div></div></section>
-  <section class="newsletter" id="newsletter"><div class="shell"><div><span class="eyebrow">The Sunday letter</span><h2>A good thing,<br>in your inbox.</h2></div><div><p>One thoughtful read, one useful find, and one reason to get out there. Sent every other Sunday, never noisy.</p><form id="signup"><input id="email" type="email" placeholder="Your email address" required aria-label="Email address"><button type="submit">SIGN ME UP →</button></form><p class="form-message" id="message" aria-live="polite"></p></div></div></section>
-  <footer class="shell"><div class="footer-row"><span>© 2026 FIELD NOTES</span><div class="footer-links"><a href="#top">Instagram</a><a href="#top">Contact</a><a href="#top">Privacy</a></div><span>MADE FOR A WIDER WORLD</span></div></footer>
+        <div class="hero-scene" aria-hidden="true">
+          <div class="sun"></div><div class="palm"></div><div class="house"><span class="window one"></span><span class="window two"></span></div>
+          <div class="scene-label caps">A BETTER LIFE REALTY<br>REAL ESTATE ADVISOR</div>
+        </div>
+      </div>
+    </section>
+    <section class="quick-links" aria-label="Get started">
+      <div class="wrap">
+        <a class="quick-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfvXaug-2Bkz4LqCDSMdsf_dxBelDa9qCf_4-nLgptiF-RzyA/viewform" target="_blank" rel="noopener"><span><strong>I want to buy</strong><span>Tell me what home looks like to you</span></span><b>↗</b></a>
+        <a class="quick-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdIPVN3YpKyuf8_kAQiciHMnhI_C76pbQS2JfYtX9zStqwG0A/viewform" target="_blank" rel="noopener"><span><strong>I want to sell</strong><span>Build a game plan around your goals</span></span><b>↗</b></a>
+        <a class="quick-link" href="tel:+17206263645"><span><strong>Let’s talk</strong><span>(720) 626-3645 · Direct</span></span><b>↗</b></a>
+      </div>
+    </section>
+    <section class="intro wrap" id="about">
+      <div><span class="caps">Meet your agent</span><h2>More than a transaction.</h2></div>
+      <p class="intro-copy">I am Logan DeLong, a Real Estate Advisor with A Better Life Realty. My job is simple: listen closely, explain the details, and help you make a move you feel <em>great</em> about.</p>
+    </section>
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-top"><div><span class="caps">Built around your move</span><h2>Real estate, simplified.</h2></div><p>Clear guidance for buyers, sellers, and anyone starting to explore what is possible in the Tampa Bay area.</p></div>
+        <div class="service-grid">
+          <article class="service"><span class="service-number caps">01 / Buy</span><div><h3>Find a place that fits.</h3><p>From your first saved listing to the keys in your hand, we will make a thoughtful plan and move at your pace.</p></div><div class="service-art"></div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfvXaug-2Bkz4LqCDSMdsf_dxBelDa9qCf_4-nLgptiF-RzyA/viewform" target="_blank" rel="noopener">START THE BUYER QUESTIONNAIRE →</a></article>
+          <article class="service"><span class="service-number caps">02 / Sell</span><div><h3>Put your best foot forward.</h3><p>Get a focused strategy for pricing, presentation, and marketing so your next chapter starts on the right terms.</p></div><div class="service-art"></div><a href="https://docs.google.com/forms/d/e/1FAIpQLSdIPVN3YpKyuf8_kAQiciHMnhI_C76pbQS2JfYtX9zStqwG0A/viewform" target="_blank" rel="noopener">START THE SELLER QUESTIONNAIRE →</a></article>
+          <article class="service"><span class="service-number caps">03 / Explore</span><div><h3>Get a read on the market.</h3><p>Not ready today? No pressure. Start with a home value estimate or search what is out there when the timing feels right.</p></div><div class="service-art"></div><a href="https://abetterliferealty.com/home-evaluation" target="_blank" rel="noopener">GET A FREE HOME EVALUATION →</a></article>
+        </div>
+      </div>
+    </section>
+    <section class="process wrap" id="process">
+      <div><span class="caps">A better way to move</span><h2>Good decisions start with a good conversation.</h2></div>
+      <div class="process-list">
+        <div class="process-item"><span class="caps">01</span><div><strong>Start with you</strong><p>Tell me what matters most—your timing, your priorities, and what you want the next season of life to feel like.</p></div><b>→</b></div>
+        <div class="process-item"><span class="caps">02</span><div><strong>Make a clear plan</strong><p>We will map the search or sale around your goals, so each decision has a reason behind it.</p></div><b>→</b></div>
+        <div class="process-item"><span class="caps">03</span><div><strong>Move with confidence</strong><p>From strategy through the fine print, you will know what is happening and what comes next.</p></div><b>→</b></div>
+      </div>
+    </section>
+    <section class="statement">
+      <div class="wrap"><span class="caps">The Logan difference</span><div><blockquote>“The right home should feel like a <em>better life</em> waiting to happen.”</blockquote><cite>Logan DeLong · Real Estate Advisor</cite></div></div>
+    </section>
+    <section class="contact wrap" id="contact">
+      <div class="contact-grid">
+        <div><span class="caps">Make your move</span><h2>Ready when you are.</h2><p>Have a question, an address you are curious about, or a move on your mind? Reach out directly. I would love to hear what you are planning.</p></div>
+        <div>
+          <div class="contact-lines">
+            <div class="contact-line"><span>CALL OR TEXT</span><a href="tel:+17206263645">(720) 626-3645</a></div>
+            <div class="contact-line"><span>EMAIL</span><a href="mailto:logan@abetterliferealty.com">logan@abetterliferealty.com</a></div>
+            <div class="contact-line"><span>BROKERAGE</span><a href="https://abetterliferealty.com/" target="_blank" rel="noopener">A Better Life Realty ↗</a></div>
+          </div>
+          <form class="contact-form" id="note-form">
+            <input id="name" type="text" placeholder="Your name" required aria-label="Your name">
+            <input id="email" type="email" placeholder="Your email" required aria-label="Your email">
+            <textarea id="message" placeholder="How can I help?" required aria-label="Your message"></textarea>
+            <button class="pill pill-dark" type="submit">SEND LOGAN A NOTE →</button>
+            <p class="form-note" id="form-note" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><a class="brand" href="#top"><span class="monogram">LD</span>LOGAN DELONG</a><p>Real Estate Advisor with A Better Life Realty. Helping clients take their next step across Tampa Bay and beyond.</p></div>
+        <div><h4>START HERE</h4><a href="https://abetterliferealty.com/listing-search" target="_blank" rel="noopener">Search homes</a><a href="https://abetterliferealty.com/home-evaluation" target="_blank" rel="noopener">Free home evaluation</a><a href="#contact">Contact Logan</a></div>
+        <div><h4>CONNECT</h4><a href="tel:+17206263645">(720) 626-3645</a><a href="mailto:logan@abetterliferealty.com">Email Logan</a><a href="https://linktr.ee/thereal_delong" target="_blank" rel="noopener">Socials &amp; resources ↗</a></div>
+      </div>
+      <div class="legal">© 2026 Logan DeLong. All information is deemed reliable but not guaranteed and is subject to change without notice. Equal Housing Opportunity.</div>
+    </div>
+  </footer>
   <script>
-    const form = document.getElementById('signup');
-    const message = document.getElementById('message');
-    form.addEventListener('submit', (event) => { event.preventDefault(); const email = document.getElementById('email').value; message.textContent = `You’re on the list — welcome, ${email.split('@')[0]}.`; form.reset(); });
+    const menu = document.getElementById('menu');
+    const nav = document.getElementById('nav');
+    menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', open); });
+    document.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); }));
+    document.getElementById('note-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const note = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Website inquiry from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + note);
+      document.getElementById('form-note').textContent = 'Opening your email app so you can send your note directly to Logan.';
+      window.location.href = 'mailto:logan@abetterliferealty.com?subject=' + subject + '&body=' + body;
+    });
   </script>
 </body>
 </html>
-
